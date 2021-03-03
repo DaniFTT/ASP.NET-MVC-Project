@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MVC_Projec.Models.Book>
+@{
+    ViewBag.Title = "Livros";
+}
+<h2>Livros Cadastrados</h2>
+<br />
+@Html.ActionLink("Novo Livro", "NovoLivro", "Home");
+<br />
+<br />
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li style="padding-bottom: 10px;">
+            @Html.DisplayFor(m => item.ID)<span>. </span>
+            @Html.ActionLink(item.Title, "EditarLivro", "Home", new { @id = item.ID }, null)<span>, </span>
+            @Html.DisplayFor(m => item.Author)<span> . </span>
+            @Html.DisplayFor(m => item.YearOfPublication)
+        </li>
+    }
+</ul>
